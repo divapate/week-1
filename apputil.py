@@ -1,29 +1,23 @@
-#Q1
+# Q1
 import string
 
+
 def palindrome(word):
-    # Convert to lowercase
+    """Return True if word is a palindrome, ignoring case, spaces, and punctuation."""
     word = word.lower()
-    
-    # Remove spaces and punctuation
+
     cleaned = ""
     for char in word:
         if char not in string.punctuation and char != " ":
             cleaned += char
-    
-    # Check if the cleaned word is the same forwards and backwards
+
     return cleaned == cleaned[::-1]
-import string
-
-print(palindrome("racecar"))                    # True
-print(palindrome("Nurses Run"))                 # True
-print(palindrome("Sit on a potato pan, Otis.")) # True
-print(palindrome("Hello world"))                # False
 
 
-#Q2
+# Q2
 def parentheses(sequence):
-    count = 0 # always initialize 
+    """Return True if parentheses in the sequence are balanced."""
+    count = 0
 
     for char in sequence:
         if char == "(":
@@ -31,15 +25,20 @@ def parentheses(sequence):
         elif char == ")":
             count -= 1
 
-        # If we close more than we open
         if count < 0:
             return False
 
-    # Is the count zero though? if not return false handels count > 1 error 
     return count == 0
-print(parentheses("((blah)()()())"))     # True
-print(parentheses("(((())blee))"))       # True
-print(parentheses("(()hello((())()))"))  # True
-print(parentheses("((((((())"))          # False
-print(parentheses("()))"))               # False
 
+
+if __name__ == "__main__":
+    print(palindrome("racecar"))                    # True
+    print(palindrome("Nurses Run"))                 # True
+    print(palindrome("Sit on a potato pan, Otis.")) # True
+    print(palindrome("Hello world"))                # False
+
+    print(parentheses("((blah)()()())"))            # True
+    print(parentheses("(((())blee))"))              # True
+    print(parentheses("(()hello((())()))"))         # True
+    print(parentheses("((((((())"))                 # False
+    print(parentheses("()))"))                      # False
